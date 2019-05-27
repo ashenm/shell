@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+# Start WeTTy Cloud Shell
+
+set -e
+
+# ensure root
+test `id -u` -ne 0 && {
+  echo >&2 Interactive authentication required!
+  exit 1
+}
+
+# clinch user passwords
+test -r /tmp/credentials &&
+  cat /tmp/credentials | chpasswd
+
+# spawn wetty
+exec node /opt/wetty/index.js --title "$HOSTNAME" --base ""

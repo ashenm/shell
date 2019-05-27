@@ -1,0 +1,22 @@
+language:
+  minimal
+
+services:
+  docker
+
+install:
+  make install
+
+script:
+  make build
+
+deploy:
+  provider: script
+  script: make deploy
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH != *-alpha
+
+notifications:
+  slack:
+    secure: d0L+DVpNWH6/LsMP6pcJ+DJrtW8o5f9vRtUEFU1rP0L0tm0Fdguuk8hN6BR3aTZoYHMaTZ1kxu+SKVWWdRZaf3EshsebGDCoOcwF/TXRChZkELnOMcTIXlzXVdgrvLWjaZ9fGLfizlNOwnjHmB0ZcQoMMDJ/8OTRodyRIVZ/ZcBGcqKlphbou7gSQswW1J+0E+EdMxVY2zFYFd6bKci4w7rB3KJitIo1Y74hMM0RodXEqagXkKUaacYetTHCUX7O7fzmGPMbcwh+N3l0ynowotjt4pN+xGQkVas6i9Mn7Lva0l2JR9jh39Lg3CihRTSu2+hNRevd7Gy96G70OOBk1N57JsJZRrC7SoXcUZS2BxFFdcyfvPAaUkyLk9uKJq7vfP2bOzu9Z/m7kRgNg3D7LnMxkgAgeH9Hoa31RLtzn1H0tnbJaGOe8Qf5o6uYxVEfPoUFvzf7tgHRSU07PPj8347zkj7GPJXvEMQUSgrxsTn2AlyIk6JMNjNZ6bt7tHNEBpzMMnywluLXww58Zz+wzWEEw9PkW9/cxM2iiysFqG/8N0zkJybQh+QxKAMvl9y12HTQQ6ZlYjJPDzocWQJWoxw9II0EqjnLwtajbbBAMpOQh5dtkRjzAPB5ooEOo6i8K4z5Tk1ioN6ket7UIQmbOnt2ODi3hqJNRPR7R3abLvw=

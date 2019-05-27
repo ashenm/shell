@@ -1,0 +1,9 @@
+= Shell
+:toc:
+:toc-placement!:
+:warning-caption: :warning:
+:note-caption: :paperclip:
+
+[discrete]
+====== The Personal Cloud Shell
+image:https://travis-ci.com/ashenm/shell.svg?branch=master["Build Status", link="https://travis-ci.com/ashenm/shell"] image:https://img.shields.io/badge/tag-latest-blue.svg["Image Tag", link="https://github.com/ashenm/shell/tree/latest"] image:https://images.microbadger.com/badges/image/ashenm/shell.svg["Image Overview", link="https://hub.docker.com/r/ashenm/shell/"]

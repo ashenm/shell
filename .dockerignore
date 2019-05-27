@@ -1,0 +1,6 @@
+.git
+.travis.yml
+.dockerignore
+*.adoc
+Makefile
+scripts
