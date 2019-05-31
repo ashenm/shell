@@ -15,7 +15,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
 RUN sudo mkdir -p /opt/wetty && \
   curl --silent --location --show-error https://github.com/krishnasrinivas/wetty/archive/master.zip | \
     sudo bsdtar --extract --keep-old-files --file - --strip-components 1 --directory /opt/wetty && \
-  sudo -H yarn --cwd /opt/wetty install && sudo -H yarn --cwd /opt/wetty build
+  sudo -H yarn --cwd /opt/wetty install && sudo -H yarn --cwd /opt/wetty build && \
+  sudo -H yarn --ignore-scripts --prefer-offline --production true --cwd /opt/wetty install
 
 # add auxiliary user
 RUN sudo groupadd --gid 1001 ashenm && \
