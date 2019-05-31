@@ -12,7 +12,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
   sudo apt-get update && sudo -E apt-get install --yes --no-install-recommends python-dev yarn
 
 # setup wetty
-RUN sudo git clone https://github.com/krishnasrinivas/wetty.git /opt/wetty && \
+RUN sudo mkdir -p /opt/wetty && \
+  curl --silent --location --show-error https://github.com/krishnasrinivas/wetty/archive/master.zip | \
+    sudo bsdtar --extract --keep-old-files --file - --strip-components 1 --directory /opt/wetty && \
   sudo -H yarn --cwd /opt/wetty install && sudo -H yarn --cwd /opt/wetty build
 
 # add auxiliary user
