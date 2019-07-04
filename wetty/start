@@ -10,8 +10,8 @@ test `id -u` -ne 0 && {
 }
 
 # clinch user passwords
-test -r /tmp/credentials &&
-  cat /tmp/credentials | chpasswd
+test -r /run/secrets/credentials &&
+  cat /run/secrets/credentials | chpasswd
 
 # spawn wetty
 exec node /opt/wetty/index.js --title "$HOSTNAME" --base ""
