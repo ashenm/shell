@@ -6,7 +6,15 @@ ARG DEBIAN_FRONTEND=noninteractive
 # expose tcp ports
 EXPOSE 3000/tcp
 
-# install requirements
+# install latest node
+RUN sudo mkdir --parent /opt/node && \
+  curl --silent --fail --show-error --location 'https://nodejs.org/dist/latest/' | \
+  egrep --only-matching --max-count 1 'node-v[0-9]+\.[0-9]+\.[0-9]+-linux-x64.tar.xz' | \
+  wget --quiet --base='https://nodejs.org/dist/latest/' --input-file - --output-document - | \
+  sudo tar --xz --extract --strip-components 1 --file - --directory /opt/node
+ENV PATH /opt/node/bin:$PATH
+
+# install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
   sudo apt-get update && sudo -E apt-get install --yes --no-install-recommends python-dev yarn
