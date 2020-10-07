@@ -13,7 +13,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
 
 # setup wetty
 RUN sudo mkdir -p /opt/wetty && \
-  curl --silent --location --show-error https://github.com/krishnasrinivas/wetty/archive/master.zip | \
+  curl --silent --location --show-error https://github.com/krishnasrinivas/wetty/archive/main.zip | \
     sudo bsdtar --extract --keep-old-files --file - --strip-components 1 --directory /opt/wetty && \
   sudo -H yarn --cwd /opt/wetty install && sudo -H yarn --cwd /opt/wetty build && \
   sudo -H yarn --ignore-scripts --prefer-offline --production true --cwd /opt/wetty install
